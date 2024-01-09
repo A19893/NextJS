@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-ul {
+/* ul {
   display: flex;
   justify-content: space-around;
 }
@@ -15,4 +15,4 @@ ul {
 
 h1{
   text-align: center;
-}
+} */
