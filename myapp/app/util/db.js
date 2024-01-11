@@ -76,11 +76,4 @@ export const users = [
     password: "password1213",
     age: 21,
   },
-  {
-    id: "12b",
-    name: "John Doe",
-    email: "john.doe@example3.com",
-    password: "password13",
-    age: 23,
-  },
 ];
