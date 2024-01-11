@@ -21,7 +21,7 @@ export async function POST(req, res) {
       "utf-8"
     );
 
-    return NextResponse.json({message:"User Created Successfully!!"})
+    return NextResponse.json({message:"User Created Successfully!!",ok: true})
   }
 }
 

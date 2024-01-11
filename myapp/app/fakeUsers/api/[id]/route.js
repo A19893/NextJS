@@ -5,32 +5,13 @@ export function GET(_, res) {
   const { id } = res.params;
   const data = users;
   const user = data.filter((item) => item.id === id);
-  return NextResponse.json({ user }, { status: 200 });
+  return NextResponse.json(user , { status: 200 });
 }
 
-// export async function POST(req,res){
-//     const {id} = res.params;
-//     const {name,email,password}= await req.json();
-//     const {
-//         name:uName,
-//         email: uEmail,
-//         password: uPassword
-//     }= users.find((u)=>u.id === id);
-
-//     if(uName===name && uEmail===email && uPassword ===  password){
-//         return NextResponse.json({res:"Successfully logged in"})
-//     }
-//     else if(!name || !password || !email){
-//         return NextResponse.json({res:"Please provide credentials"})
-//     }
-//     else{
-//         return NextResponse.json({res:"Invalid credentials"})
-//     }
-// }
 
 export async function PUT(req, res) {
   const { id } = res.params;
-  let { name, email, password } = await req.json();
+  let { name, email, password, age } = await req.json();
   const userIndex = users.findIndex((user) => user.id === id);
   if (userIndex === -1)
     return NextResponse.json({ result: "User Not Found" }, { status: 404 });
@@ -43,6 +24,9 @@ export async function PUT(req, res) {
   if (password) {
     users[userIndex].password = password;
   }
+  if (age) {
+    users[userIndex].age = age;
+  }
   const updatedUser = users;
   const UpdatedData = JSON.stringify(updatedUser);
 
@@ -51,7 +35,7 @@ export async function PUT(req, res) {
     `export const users= ${UpdatedData}`,
     "utf-8"
   );
-  return NextResponse.json({ result: "User Updated Successdfully!" });
+  return NextResponse.json({ result: "User Updated Successdfully!",ok:true });
 }
 
 export async function DELETE(req, res) {
@@ -68,5 +52,5 @@ export async function DELETE(req, res) {
     `export const users= ${UpdatedData}`,
     "utf-8"
   );
-  return NextResponse.json({ result: "User Deleted Successdfully!" });
+  return NextResponse.json({ result: "User Deleted Successdfully!" , ok:true});
 }
